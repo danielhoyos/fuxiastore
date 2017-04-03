@@ -91,7 +91,7 @@ class ProductoModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Producto;
-            $sql = "SELECT * FROM {$this->table} where PRO_Estado = ?";
+            $sql = "SELECT * FROM {$this->table} where PRO_Estado = ? ORDER BY PRO_Id DESC";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPRO_Estado());
             $query->execute();
