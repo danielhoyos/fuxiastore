@@ -1,0 +1,512 @@
+.item_menu table{
+    color: white;
+}
+
+#div_agregar_sucursal, #div_editar_sucursal, #div_agregar_vendedor, #div_editar_vendedor,
+#div_agregar_categoria, #div_editar_categoria, #div_agregar_producto, #div_editar_producto, #div_ver_factura, 
+#div_abonar_separado{
+    position: fixed !important;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8) !important;
+    position: relative;
+    background-color: #fff;
+    min-width: 500px;
+    padding: 30px;
+}
+
+.oculto{
+    display: none;
+}
+
+.div_datos button{
+    width: 100px;
+    height: 30px;
+}
+
+.div_datos{
+    position: relative;
+    min-height: 100px;
+    border-radius: 2px;
+    background-color: gray;
+    box-shadow: 0 0 10px 0 #999;
+    position: absolute;
+    padding-bottom: 20px;
+}
+
+.sucursal{
+    width: 300px;
+    top: 20%;
+    left: 36.5%;
+}
+
+.vendedor{
+    width: 400px;
+    top: 7%;
+    left: 33%;
+}
+
+.producto{
+    width: 330px;
+    top: 10%;
+    left: 33%;
+}
+
+.separado{
+    width: 360px;
+    top: 10%;
+    left: 33%;
+}
+
+.producto_editar{
+    width: 330px;
+    top: 2%;
+    left: 33%;
+}
+
+.div_datos #imagen_item{
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.div_datos #imagen_item img{
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.div_datos h3{
+    text-align: center;
+    margin: 20px;
+    color: #ff0b48;
+}
+
+.div_datos  table{
+    margin: auto;
+}
+
+.div_datos input, select{
+    margin-bottom: 10px; 
+}
+
+.botton_ver{
+    margin: 5% 0 0 20%;
+}
+
+.x{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 30px !important;
+    height: 30px !important;
+}
+
+/*PRODUCTOS*/
+
+#estadoProducto, #estadoNotificaciones{
+    position: absolute;
+    top: 85px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: #ff0b48;
+    cursor: pointer;
+}
+
+#estadoProducto{
+    width: 470px;
+    left: 8%;
+}
+
+#estadoNotificaciones{
+   width: 550px;
+   left: 1%;
+}
+
+#estadoProducto a, #estadoNotificaciones a{
+    border-left: 1px solid gainsboro;
+    text-decoration: none;
+    padding: 10px;
+    overflow: hidden;
+    float: left;
+    color: white;
+}
+
+#estadoProducto a:hover, #estadoNotificaciones a:hover{
+    color: black;
+}
+
+#estadoProducto a:first-child, #estadoNotificaciones a:first-child{
+    border-left: none;
+}
+
+.buscarProducto{
+    position: absolute;
+    width: 200px;
+    height: 27px;
+    top: 85px;
+    left: 74.5%;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.activo{
+    color:black !important;
+    font-weight: bold;
+}
+
+.buscarFacturaInicio, .buscarFacturaFin, .buscarSeparadoInicio, 
+.buscarSeparadoFin, .buscarSeparadoIdentificacion, .buscarVentaIdentificacion{
+    position: absolute;
+    width: 180px;
+    height: 27px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.buscarFacturaInicio{
+    left: 50%;
+    top: 135px;
+}
+
+.buscarFacturaFin{
+    left: 71.5%;
+    top: 135px;
+}
+
+.buscarSeparadoInicio{
+    left: 49%;
+    top: 450px;
+}
+
+.buscarSeparadoFin{
+    left: 71%;
+    top: 450px;
+}
+
+.buscarSeparadoIdentificacion{
+    left: 5%;
+    top: 450px;
+}
+
+.buscarVentaIdentificacion{
+    left: 28.5%;
+    top: 135px;
+}
+
+.icon_buscar, .icon_buscar_factura, .icon_buscar_separado{
+    position: absolute;
+    width: 40px;
+    height: 19px;
+    color: white;
+    background-color: #ff0b48;
+    padding: 10px 0;
+}
+
+.icon_buscar{
+    top: 85px;
+    left: 94%;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.icon_buscar_factura{
+   top: 135px;
+   left: 93%; 
+   border-radius: 100%;
+}
+
+.icon_buscar_separado{
+   top: 450px;
+   left: 93%; 
+   border-radius: 100%; 
+}
+
+.icon_buscar_factura span ,.icon_buscar_separado span{
+    margin: 10px;
+}
+
+.icon_buscar:hover{
+    color: #000 !important;
+}
+
+.icon_buscar span{
+    margin: 10px;
+}
+
+.icon_buscar_factura:hover{
+    color: #000 !important;
+}
+
+.icon_buscar_separado:hover{
+    color: #000 !important;
+}
+
+.tablasProductos{
+    width: 980px;
+    font-size: 13px;
+}
+
+.tablaContabilidad, .tablasProductos{
+    margin: 10px auto 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #ff0b48;
+}
+
+.tablaFacturas{
+    margin: 10px auto 0 auto;
+}
+
+.tablaFacturas table{
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #ff0b48;
+    width: 690px;
+}
+
+.tablaContabilidad{
+    width: 250px;
+}
+
+.tablaFacturas{
+    width: 690px;
+}
+
+.tablasProductos th{
+    background-color: #ff0b48;
+    padding: 5px;
+}
+
+.tablaContabilidad th{
+    background-color: #ff0b48;
+    padding: 5px;
+}
+
+.tablaFacturas th{
+    background-color: #ff0b48;
+    padding: 5px;
+}
+
+.tablasProductos td{
+    padding: 5px;
+    height: 30px;
+}
+
+.tablaContabilidad td{
+    padding: 5px;
+    height: 30px;
+}
+
+.tablaFacturas td{
+    padding: 5px;
+    height: 30px;
+}
+
+.tablasProductos tbody tr:nth-child(even){
+    background-color: rgba(241, 101, 41, 0.15);
+}
+
+.tablaContabilidad tbody tr:nth-child(even){
+    background-color: rgba(241, 101, 41, 0.15);
+}
+
+.tablasProductos tr:first-child{
+    border-top: none; 
+}
+/* FIN PRODUCTOS */
+
+
+/* FACTURA VENTA*/
+.ver_factura_venta{
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+#factura_venta{
+    border: 1px solid #ff0f48;
+    border-radius: 20px;
+    width: 860px;
+    margin: 2% auto 0 auto;
+    box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    padding: 20px;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.inputCorto{
+    width: 100px;
+}
+
+.inputDatos{
+    width: 170px;
+}
+
+#factura_venta .inputMedio{
+    width: 180px;
+    border: 1px solid #3d3d3d;
+    text-align: right;
+}
+
+#factura_venta .inputLargo{
+    width: 320px;
+    border: 1px solid #3d3d3d;
+}
+
+#factura_venta #cabecera_venta{
+    border-radius: 20px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+#datos_factura{
+    margin-bottom: 20px;
+}
+
+#numero_factura{
+    border: 1px solid #ff0b48;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    float: right;
+}
+
+#fecha_factura{
+    width: 120px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#fecha_factura, #numero_factura{
+    display: inline-table;
+}
+
+.error_factura{
+    border: 1px dotted red !important;
+}
+
+#tabla_productos{
+    margin: 0 auto;
+}
+
+#tabla_facturas{
+    font-size: 14px;
+}
+
+.agregarProducto{
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 100px !important;  
+    margin-top: 10px;
+}
+
+#compra{
+    text-align: right;
+    margin-right: 3px;
+}
+
+#compra label, #total_compra{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.venderProducto{
+    float: right;
+}
+
+#nota{
+    margin: 20px auto 0 auto;
+    width: 840px;
+    border: 1px solid #ff0f48;
+    border-radius: 20px;
+    box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    padding: 20px;
+    font-size: 12px; 
+}
+
+/* FIN FACTURA VENTA*/
+
+/* SEPARADOS */
+
+#separados{
+    border: 1px solid #ff0f48;
+    border-radius: 20px;
+    width: 840px;
+    margin: 2% auto 0 auto;
+    box-shadow:
+        0 15px 30px 0 rgba(255,255,255,.25) inset,
+        0 2px 7px 0 rgba(0,0,0,.2);
+    padding: 20px;
+}
+/* FIN SEPARADOS */
+
+/* CONTABILIDAD */
+
+#aside, #section{
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 0 #999;
+    color: white;
+    padding-top: 10px;
+    float: left;
+}
+
+#aside{
+    width: 250px;
+    min-height: 300px;
+    margin: 0 10px;
+    font-size: 12px;
+}
+
+#imagen_aside{
+    width: 200px;
+    height: 200px;
+    margin: 10px auto;
+    border-radius: 100%;
+    background-color: gray;
+    border: 5px solid #ff0b48;
+}
+
+#imagen_aside img{
+    width: 140px;
+    height: 140px;
+    margin: 30px;
+    background-size: 100%;
+}
+
+#aside table{
+    border: none;
+}
+
+
+#section{
+    width: 715px;
+    min-height: 430px; 
+}
+
+#cerrar_factura{
+    margin-top: 10px;
+    padding: 8px 25px;
+}
+
+
+/* FIN CONTABILIDAD */
+
+/* SEPARADO */
+
+.separarProducto{
+    position: relative;
+    margin: 0 0 0 740px;
+}
+
+/* FIN SEPARADO */

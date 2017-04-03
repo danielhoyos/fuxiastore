@@ -1,0 +1,374 @@
+/******** HEADER ********/ 
+.header{
+    width: 100%;
+    height: 100px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+#header_first{
+    background-color: #2d2d2d;
+    padding: 0 10%;
+}
+
+#header_second{
+    background-color: gray;
+    box-shadow: 0 0 20px 0 #999;
+}
+
+#header_first, .header1{
+    height: 60px;
+}
+
+#header_second, .header2{
+    height: 40px;
+}
+
+.header1, .header2{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#logo_tienda{
+    width: 57px;
+    height: 57px;
+    background-size: 100% 100%;
+    margin: 0 0 3px 0;
+    float: left;
+}
+
+#nombre_tienda{
+    font: bold 50px/100% Arial, Helvetica, sans-serif;
+    text-shadow: 3px 2px 2px #000;
+    color: #ff0b48;
+    line-height: 60px;
+    margin-left: 20px;
+}
+
+#nom_user{
+    float: right;
+    margin-right: 10px;
+    text-transform: uppercase;
+    line-height: 60px;
+}
+
+#avatar{
+    float: right;
+    width: 50px;
+    height: 50px;
+    background-size: 100% 100%; 
+    margin: 5px;
+    border-radius: 100%;
+}
+
+#icon_tipos_ropa{
+    font-size: 25px !important;
+    float: left;
+    margin: 7px 10px 0 0;
+}
+
+#tipos_ropa{
+    font-size: 10px;
+    line-height: 40px;
+}
+
+#home{
+    float: right;
+    background: #ff0b48;
+    padding: 11px 20px;
+    text-decoration: none;
+    color: black;
+}
+
+#home:hover, #exit:hover{
+    color: white;
+}
+
+#exit{
+    border-left: 1px solid #ccc;
+    float: right;
+    background: #ff0b48;
+    padding: 11px 20px;
+    text-decoration: none;
+    color: black;
+}
+
+/******** FIN HEADER ********/ 
+
+/******** CONTENIDO ********/
+
+.item_menu{
+    position: relative;
+    display: inline-block;
+    width: 168px;
+    min-height: 235px;
+    margin: 10px 0 0 10px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 6, 0.4);
+    box-shadow: 0 0 10px 0 #999;
+    color: #ff0b48;
+    cursor: pointer;
+    padding: 0 10px 10px 10px;
+}
+
+
+.item_menu label{
+    color: white;
+}
+
+.centrar{
+    text-align: center;
+}
+
+.item_menu:hover{
+    box-shadow: 0 0 10px 0 #ff0b48;
+}
+
+#imagen_item{
+    width: 110px;
+    height: 110px;
+    background-color: gray;
+    background-size: 100% 100%;
+    margin: 20px auto;
+    border-radius: 100%;
+    border: 5px solid #ff0b48;
+    padding: 20px;
+}
+
+#imagen_item img{
+    width: 110px;
+    height: 110px;
+    background-size: 100% 100%;
+}
+
+/*PERFIL*/
+
+.portada{
+    position: relative;
+    width: 980px;
+    height: 250px;
+    margin: 0 0 10px 10px;
+    border-radius: 2px;
+    background-color: rgba(83, 83, 83, 0.7);
+    box-shadow: 0 0 10px 0 #999;
+    text-align: center;
+    color: #ff0b48;
+    cursor: pointer;
+}
+
+.portada img{
+    background-size: 100% 100%;
+    width: 980px;
+    height: 250px;
+    z-index: -1;
+}
+
+#imgPerfil{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    background-size: 100% 100%;
+    margin: 0 auto 10px auto;
+    border-radius: 100%;
+    border: 5px solid #ff0b48;
+    top: 25px;
+    left: 400px;
+}
+
+#imgPerfil img{
+    width: 150px;
+    height: 150px;
+    background-size: 100% 100%;
+    border-radius: 100%;
+    margin-bottom: 8px;
+}
+
+.upload_Img input[type="file"]{
+    height: 40px;
+    opacity: 0;
+}
+
+.upload_Img{
+    position: absolute;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    background: url(../assets/edit_icon.png) !important;
+    background-size: 100% 100% !important;
+    overflow: hidden;
+    border: 4px solid #ff0b48 !important; 
+}
+
+.upload_Perfil{
+    top: 135px;
+    left: 520px;
+}
+
+.upload_Portada{
+    top: 205px;
+    left: 935px;
+}
+
+.col{
+    position: relative;
+    width: 488px;
+    min-height: 250px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.col1{
+    margin-left: 10px;
+    border-right: 2px dotted black;
+    border-color: #ff0b48;
+}
+
+.col1, .col2{
+    display: inline-block;
+}
+
+.icon_Col{
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 100%; 
+    padding: 5px;
+}
+
+.icon_Col img{
+    width: 50px;
+    height: 50px;
+    background-size: 100% 100%;
+    border-radius: 100%;
+}
+
+.titulo_Col{
+    text-align: center;
+    color: #ff0b48;
+    margin-top: 10px;
+}
+
+.col input{
+    margin-bottom: 7px;
+    width: 220px;
+}
+
+.col select{
+    margin-bottom: 7px;
+    width: 250px !important;
+}
+
+select{
+    width: 200px;
+}
+
+input[type=date]{
+    width: 170px;
+}
+
+.col input[type=date]{
+    width: 220px;
+}
+
+.col table{
+    position: relative;
+    min-width: 300px;
+    margin: 10px auto 0 auto;
+    text-align: left;
+    color: white;
+}
+
+.col table td:last-child{
+    padding-left: 10px; 
+}
+
+#botones_crud{
+    margin-top: 50px;
+}
+
+#botones_crud, #botones_edit, #botones_guardar{
+    text-align: center;
+}
+
+#contenedor_principal button{
+    width: 100px;
+    height: 30px;
+}
+
+#contenedor_principal .botton_oculto{
+    display: none;
+}
+
+#icon_editar_Password{
+    text-decoration: none;
+    padding: 2px;
+    font-size: 13px;
+    margin-left: -25px;
+    color: white;
+}
+
+#icon_editar_Password:hover{
+    color: #ff0b48;
+}
+
+.icon_verPassword{
+    position: absolute;
+    margin-top: 6px;
+    margin-left: -22px;
+    color:gray;
+}
+.icon_verPassword:hover, .verPasswordActivo{
+    color:white;
+}
+/*FIN PERFIL*/
+
+/******** FIN CONTENIDO ********/ 
+
+/******** FOOTER ********/
+#footer{
+    width: 100%;
+    height: 53px; 
+    background: #2d2d2d;
+    clear: both;
+    color: #ff0b48;
+}
+
+#pie_pagina{
+    width: 1000px;
+    margin: auto;
+}
+
+#imagenFooter{
+    width: 53px;
+    height: 45px;
+    margin-left: 470px;
+    background-color: #999;
+    border-radius: 100%; 
+    font-size: 40px;
+    text-align: center;
+    padding-top: 7px;
+}
+
+#texto-L, #texto-R { 
+    width: 400px;
+    font: bold 15px/100% Arial, Helvetica, sans-serif;
+    color: #ff0b48; 
+    text-align:center; 
+    line-height: 53px;
+}
+
+#texto-L { 
+    float: left; 
+    cursor: pointer;
+}
+
+#texto-L a{ 
+    color: #fbb314;
+    text-decoration: none;
+}
+
+#texto-R { 
+    float: right;
+}
+/******** FIN FOOTER ********/ 
