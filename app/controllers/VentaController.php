@@ -98,9 +98,7 @@ class VentaController implements IController {
                 }
             }
             require_once "{$config->get("rootFolder")}fpdf/fpdf.php";
-
-            $alto = 102 + (count($codigos) * 3);
-
+            $alto = 135 + (count($codigos) * 3);
             $pdf = new FPDF('P', 'mm', array(80, $alto));
             $pdf->AddPage();
             $pdf->SetMargins(5, 0, 5);
@@ -155,10 +153,20 @@ class VentaController implements IController {
             $pdf->Cell(70, 3, "Valor a Pagar: $ {$valorPagar}", 0, 0, "R");
             $pdf->ln();
             $pdf->ln();
+            $pdf->SetFont("Courier", "", 9);
+            $pdf->Cell(70, 3, "* Pasados 15 dias no se aceptan", 0, 2, "L");
+            $pdf->Cell(70, 3, "  devoluciones", 0, 2, "L");
             $pdf->ln();
-            $pdf->SetFont("Courier", "B", 11);
+            $pdf->Cell(70, 3, "* Los articulos separados no tienen", 0, 2, "L");
+            $pdf->Cell(70, 3, "  cambio", 0, 2, "L");
+            $pdf->ln();
             $pdf->SetFont("Courier", "B", 9);
+            $pdf->Cell(70, 3, "Cel. 315 2724717", 0, 2, "C");
+            $pdf->SetFont("Courier", "B", 11);
             $pdf->Cell(70, 3, "GRACIAS POR SU COMPRA", 0, 2, "C");
+            $pdf->ln();
+            $pdf->ln();
+            $pdf->Cell(70, 3, ".", 0, 2, "C");
             $pdf->Output("facturas/factura-no-{$r->data}.pdf", "F");
             $abrir = "<script language='javascript'>window.open('facturas/factura-no-{$r->data}.pdf','_blank','');</script>";
 
@@ -259,5 +267,4 @@ class VentaController implements IController {
             $this->view->show("private/PartialFacturas.php", $vars);
         }
     }
-
 }

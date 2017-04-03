@@ -1,5 +1,4 @@
 <?php
-
 class AppController {
 
     public static $login;
@@ -20,7 +19,6 @@ class AppController {
         require_once 'config.php'; //Archivo con configuraciones.
 
         self::verificarLogin();
-        
         require_once $config->get("rootFolder") . $config->get('modelsFolder') . "SPDO.php"; //PDO con singleton
         require_once $config->get("rootFolder") . $config->get('viewsFolder') . "View.php"; //Mini motor de plantillas
         require_once $config->get("rootFolder") . $config->get('controllersFolder') . "IController.php"; //Interface controlador
@@ -33,7 +31,6 @@ class AppController {
         } else {
             $controllerName = "IndexController";
         }
-
         //Lo mismo sucede con las acciones, si no hay acción, tomamos index como acción
         if (!empty($_GET['action'])) {
             $actionName = $_GET['action'];
@@ -63,7 +60,5 @@ class AppController {
             die('El objeto no es una instancia de IController');
         }
     }
-
 }
-
 ?>
