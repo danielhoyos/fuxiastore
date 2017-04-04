@@ -36,7 +36,8 @@ class ProductoController implements IController {
 
             $marcaModel = new MarcaModel();
             $marcas = $marcaModel->get();
-
+            
+            $cantProd = $productoModel->getCantProd();
             $todos = false;
 
             if (!isset($_REQUEST["estado"])) {
@@ -52,9 +53,13 @@ class ProductoController implements IController {
                     $producto->setPRO_Estado("vendido");
                 }
             }
-
+            if(!isset($_REQUEST["pag"])){
+                $pag = 1;
+            }else{
+                $pag = $_REQUEST["pag"];
+            }
             if ($todos) {
-                $productos = $productoModel->get();
+                $productos = $productoModel->getProd($pag);
             } else {
                 $productos = $productoModel->getByEstado($producto);
             }
@@ -63,6 +68,7 @@ class ProductoController implements IController {
             $vars["sucursales"] = $sucursales->data;
             $vars["productos"] = $productos->data;
             $vars["marcas"] = $marcas->data;
+            $vars["cantProd"] = $cantProd->data;
             $this->view->show("private/Productos.php", $vars);
         } else {
             $this->view->show("public/home.php");

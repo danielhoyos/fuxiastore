@@ -94,10 +94,19 @@ $user = AppController::$login;
                         $datos .= "<td>{$estado}</td>";
                     }
                     $datos.="<td>{$p->getPRO_Fecha_Ingreso()}</td>";
-                    $datos .= "</tr>";
+                    $datos .= "</tr><br><br>";
+                    $datos .= "<a></a><a></a>";
 
                     echo $datos;
+                    
                 }
+                $pag = "";
+                $numPag = ceil($cantProd / 20);
+                    
+                    for($i=1;$i<=$numPag;$i++){
+                        $pag.= "<a href='?controller=Producto&action=productos&estado=todos&pag={$i}'>{$i}</a> ";
+                    }
+                    echo $pag;
                 ?>
 
             </tbody>

@@ -192,5 +192,46 @@ class ProductoModel implements IModel {
 
         return $retorno;
     }
-
+    
+    public function getProd($pag){
+        $retorno = new stdClass();
+        try {
+            if($pag == 1){
+                $i = 0;
+                $f = 20 * $pag;
+            }else{
+                $f = 20 * $pag;
+                $i = $f - 20;
+            }
+            $sql = "SELECT * FROM {$this->table} ORDER BY PRO_Id DESC LIMIT {$i},{$f}";
+            $query = $this->conexion->prepare($sql);
+            $query->execute();
+            $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);
+            $retorno->status = 200;
+            $retorno->msg = "Consulta exitosa";
+            if (count($retorno->data) === 0) {
+                $retorno->status = 201;
+                $retorno->msg = "No hay registros en la base de datos.";
+            }
+        } catch (PDOException $e) {
+            $retorno->msg = $e->getMessage();
+            $retorno->status = 501;
+        }
+        return $retorno;
+    }
+    public function getCantProd() {
+        $retorno = new stdClass();
+        try {
+            $sql = "SELECT * FROM {$this->table}";
+            $query = $this->conexion->prepare($sql);
+            $query->execute();
+            $retorno->data = $query->rowCount();
+            $retorno->status = 200;
+            $retorno->msg = "{$this->nameEntity} encontrada";
+        } catch (PDOException $e) {
+            $retorno->msg = $e->getMessage();
+            $retorno->status = 501;
+        }
+        return $retorno;
+    }
 }

@@ -112,5 +112,4 @@ class MarcaModel implements IModel {
         }
         return $retorno;
     }
-
 }
