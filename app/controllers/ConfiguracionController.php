@@ -24,5 +24,4 @@ class ConfiguracionController implements IController {
             $this->view->show("public/home.php");
         }
     }
-
 }

@@ -3,7 +3,7 @@
 class TipoIdentificacionModel implements IModel{
     
     private $conexion;
-    private $table = "TBL_Tipo_Identificacion";
+    private $table = "tbl_tipo_identificacion";
     private $nameEntity = "TipoIdentificacion";
     
     public function __construct() {

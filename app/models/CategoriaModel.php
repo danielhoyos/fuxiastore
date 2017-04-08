@@ -2,7 +2,7 @@
 
 class CategoriaModel implements IModel{
     private $conexion;
-    private $table = "TBL_Categoria";
+    private $table = "tbl_categoria";
     private $nameEntity = "Categoria";
 
     function __construct() {
@@ -13,7 +13,7 @@ class CategoriaModel implements IModel{
         $retorno = new stdClass();
         try {
             $obj instanceof Categoria;
-            $sql = "DELETE FROM {$this->table} WHERE CAT_Id = ?";
+            $sql = "DELETE FROM {$this->table} WHERE cat_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getCAT_Id());
             $query->execute();
@@ -29,7 +29,7 @@ class CategoriaModel implements IModel{
     public function get($obj = null) {
         $retorno = new stdClass();
         try {
-            $sql = "SELECT * from {$this->table} ORDER by CAT_Id";
+            $sql = "SELECT * from {$this->table} ORDER by cat_id";
             $query = $this->conexion->prepare($sql);
             $query->execute();
             $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);
@@ -50,7 +50,7 @@ class CategoriaModel implements IModel{
         $retorno = new stdClass();
         try {
             $obj instanceof Categoria;
-            $sql = "SELECT * FROM {$this->table} WHERE CAT_Id = ?";
+            $sql = "SELECT * FROM {$this->table} WHERE cat_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getCAT_Id());
             $query->execute();
@@ -95,7 +95,7 @@ class CategoriaModel implements IModel{
         try {
             $obj instanceof Categoria;
             $sql = "UPDATE {$this->table} "
-                    . "SET CAT_Nombre=? WHERE CAT_Id = ?";
+                    . "SET CAT_Nombre=? WHERE cat_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getCAT_Nombre());
             $query->bindParam(2, $obj->getCAT_Id());

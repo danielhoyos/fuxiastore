@@ -269,5 +269,4 @@ class SeparadoController implements IController {
             $this->view->show("private/PartialSeparados.php", $vars);
         }
     }
-
 }

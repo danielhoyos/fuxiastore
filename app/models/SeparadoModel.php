@@ -14,7 +14,7 @@ class SeparadoModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Separado;
-            $sql = "DELETE FROM {$this->table} WHERE SEP_Id = ?";
+            $sql = "DELETE FROM {$this->table} WHERE sep_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getSEP_Id());
             $query->execute();
@@ -31,8 +31,8 @@ class SeparadoModel implements IModel {
         $retorno = new stdClass();
         try {
             $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_producto "
-                    . "ON {$this->table}.FK_PRO_Id = tbl_producto.PRO_Id INNER JOIN tbl_persona "
-                    . "ON {$this->table}.FK_CLI_Id = tbl_persona.PK_PSN_Id ORDER BY {$this->table}.SEP_Id DESC";
+                    . "ON {$this->table}.fk_pro_id = tbl_producto.pro_id INNER JOIN tbl_persona "
+                    . "ON {$this->table}.fk_cli_id = tbl_persona.pk_psn_id ORDER BY {$this->table}.sep_id DESC";
             $query = $this->conexion->prepare($sql);
             $query->execute();
             $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);
@@ -54,8 +54,8 @@ class SeparadoModel implements IModel {
         try {
             $obj instanceof Separado;
             $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_producto "
-                    . "ON {$this->table}.FK_PRO_Id = tbl_producto.PRO_Id INNER JOIN tbl_persona "
-                    . "ON {$this->table}.FK_CLI_Id = tbl_persona.PK_PSN_Id "
+                    . "ON {$this->table}.fk_pro_id = tbl_producto.pro_id INNER JOIN tbl_persona "
+                    . "ON {$this->table}.fk_cli_id = tbl_persona.pk_psn_id "
                     . "WHERE {$this->table}.SEP_Id=?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getSEP_Id());
@@ -103,7 +103,7 @@ class SeparadoModel implements IModel {
         try {
             $obj instanceof Separado;
             $sql = "UPDATE {$this->table} "
-                    . "SET SEP_Estado=?, SEP_Valor=? WHERE SEP_Id = ?";
+                    . "SET sep_estado=?, sep_valor=? WHERE sep_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getSEP_Estado());
             $query->bindParam(2, $obj->getSEP_Valor());
@@ -123,9 +123,9 @@ class SeparadoModel implements IModel {
 
         try {
             $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_producto "
-                    . "ON {$this->table}.FK_PRO_Id = tbl_producto.PRO_Id INNER JOIN tbl_persona "
-                    . "ON {$this->table}.FK_CLI_Id = tbl_persona.PK_PSN_Id "
-                    . "WHERE {$this->table}.SEP_Fecha BETWEEN ? and ? ORDER BY {$this->table}.SEP_Id DESC";
+                    . "ON {$this->table}.fk_pro_id = tbl_producto.pro_id INNER JOIN tbl_persona "
+                    . "ON {$this->table}.fk_cli_id = tbl_persona.pk_psn_id "
+                    . "WHERE {$this->table}.sep_fecha BETWEEN ? and ? ORDER BY {$this->table}.sep_id DESC";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->fechaInicio);
             $query->bindParam(2, $obj->fechaFin);
@@ -145,9 +145,9 @@ class SeparadoModel implements IModel {
 
         try {
             $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_producto "
-                    . "ON {$this->table}.FK_PRO_Id = tbl_producto.PRO_Id INNER JOIN tbl_persona "
-                    . "ON {$this->table}.FK_CLI_Id = tbl_persona.PK_PSN_Id "
-                    . "WHERE tbl_persona.PSN_Identificacion = ? ORDER BY {$this->table}.SEP_Id DESC";
+                    . "ON {$this->table}.fk_pro_id = tbl_producto.pro_id INNER JOIN tbl_persona "
+                    . "ON {$this->table}.fk_cli_id = tbl_persona.pk_psn_id "
+                    . "WHERE tbl_persona.psn_identificacion = ? ORDER BY {$this->table}.sep_id DESC";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->identificacion);
             $query->execute();

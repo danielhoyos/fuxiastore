@@ -3,7 +3,7 @@
 class SucursalModel implements IModel {
 
     private $conexion;
-    private $table = "TBL_Sucursal";
+    private $table = "tbl_sucursal";
     private $nameEntity = "Sucursal";
 
     function __construct() {
@@ -14,7 +14,7 @@ class SucursalModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Sucursal;
-            $sql = "DELETE FROM {$this->table} WHERE SUC_Id = ?";
+            $sql = "DELETE FROM {$this->table} WHERE suc_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getSUC_Id());
             $query->execute();
@@ -51,7 +51,7 @@ class SucursalModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Sucursal;
-            $sql = "SELECT * FROM {$this->table} WHERE SUC_Id = ?";
+            $sql = "SELECT * FROM {$this->table} WHERE suc_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getSUC_Id());
             $query->execute();
@@ -99,8 +99,8 @@ class SucursalModel implements IModel {
         try {
             $obj instanceof Sucursal;
             $sql = "UPDATE {$this->table} "
-                    . "SET SUC_Nit=?, SUC_Nombre = ?, SUC_Direccion = ?, SUC_Telefono = ? "
-                    . "WHERE SUC_Id = ?";
+                    . "SET suc_nit=?, suc_nombre = ?, suc_direccion = ?, suc_telefono = ? "
+                    . "WHERE suc_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getSUC_Nit());
             $query->bindParam(2, $obj->getSUC_Nombre());

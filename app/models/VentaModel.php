@@ -20,7 +20,7 @@ class VentaModel implements IModel {
         try {
             $obj instanceof Venta;
             $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_persona "
-                    . "ON {$this->table}.VEN_CLI_Id = tbl_persona.PK_PSN_Id ORDER BY {$this->table}.VEN_Id DESC";
+                    . "ON {$this->table}.ven_cli_id = tbl_persona.pk_psn_Id ORDER BY {$this->table}.ven_id DESC";
             $query = $this->conexion->prepare($sql);
             $query->execute();
             $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);
@@ -39,7 +39,7 @@ class VentaModel implements IModel {
         try {
             $obj instanceof Venta;
             $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_persona "
-                    . "ON {$this->table}.VEN_CLI_Id = tbl_persona.PK_PSN_Id WHERE {$this->table}.VEN_Id = ?";
+                    . "ON {$this->table}.ven_cli_id = tbl_persona.pk_psn_Id WHERE {$this->table}.ven_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getVEN_Id());
             $query->execute();
@@ -91,7 +91,7 @@ class VentaModel implements IModel {
 
         try {
             $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_persona "
-                    . "ON {$this->table}.VEN_CLI_Id = tbl_persona.PK_PSN_Id WHERE {$this->table}.VEN_Fecha_Venta BETWEEN ? AND ? ORDER BY {$this->table}.VEN_Id DESC";
+                    . "ON {$this->table}.ven_cli_id = tbl_persona.pk_psn_id WHERE {$this->table}.ven_fecha_venta BETWEEN ? AND ? ORDER BY {$this->table}.ven_id DESC";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->fechaInicio);
             $query->bindParam(2, $obj->fechaFin);
@@ -111,7 +111,7 @@ class VentaModel implements IModel {
 
         try {
             $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_persona "
-                    . "ON {$this->table}.VEN_CLI_Id = tbl_persona.PK_PSN_Id WHERE tbl_persona.PSN_Identificacion = ? ORDER BY {$this->table}.VEN_Id DESC";
+                    . "ON {$this->table}.ven_cli_id = tbl_persona.pk_psn_id WHERE tbl_persona.psn_identificacion = ? ORDER BY {$this->table}.ven_id DESC";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->identificacion);
             $query->execute();

@@ -208,5 +208,4 @@ class UsuarioController implements IController {
 
         echo json_encode($r);
     }
-
 }

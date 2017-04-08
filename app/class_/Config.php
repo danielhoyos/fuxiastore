@@ -1,5 +1,4 @@
 <?php
-
 class Config {
 
     private $vars;
@@ -31,6 +30,5 @@ class Config {
 
         return self::$instance;
     }
-
 }
 ?>

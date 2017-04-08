@@ -3,7 +3,7 @@
 class UsuarioModel implements IModel {
 
     private $conexion;
-    private $table = "TBL_Usuario";
+    private $table = "tbl_usuario";
     private $nameEntity = "Usuario";
 
     public function __construct() {
@@ -35,8 +35,8 @@ class UsuarioModel implements IModel {
                 $obj instanceof Usuario;
 
                 $sql = "UPDATE {$this->table} SET "
-                        . "USR_Usuario=?, USR_Fecha_Modificacion=? "
-                        . "WHERE USR_Id=?";
+                        . "usr_usuario=?, usr_fecha_modificacion=? "
+                        . "WHERE usr_id=?";
 
                 $query = $this->conexion->prepare($sql);
 
@@ -61,7 +61,7 @@ class UsuarioModel implements IModel {
         $retorno = new stdClass();
         try {
 
-            $sql = "UPDATE {$this->table} SET USR_Avatar=? WHERE USR_Id=?";
+            $sql = "UPDATE {$this->table} SET usr_avatar=? WHERE usr_id=?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $usuario->getUSR_Avatar());
             $query->bindParam(2, $usuario->getUSR_Id());
@@ -79,7 +79,7 @@ class UsuarioModel implements IModel {
         $retorno = new stdClass();
         try {
 
-            $sql = "UPDATE {$this->table} SET USR_Portada=? WHERE USR_Id=?";
+            $sql = "UPDATE {$this->table} SET usr_portada=? WHERE usr_id=?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $usuario->getUSR_Portada());
             $query->bindParam(2, $usuario->getUSR_Id());
@@ -97,7 +97,7 @@ class UsuarioModel implements IModel {
     public function consultarPassword(Usuario $usuario) {
         $retorno = new stdClass();
         try {
-            $sql = "SELECT * FROM {$this->table} WHERE USR_id = ? and USR_Password = ?";
+            $sql = "SELECT * FROM {$this->table} WHERE usr_id = ? and usr_password = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $usuario->getUSR_Id());
             $query->bindParam(2, $usuario->getUSR_Password());
@@ -123,7 +123,7 @@ class UsuarioModel implements IModel {
         $retorno = new stdClass();
         try {
 
-            $sql = "UPDATE {$this->table} SET USR_Password=? WHERE {$this->table}.USR_id=?";
+            $sql = "UPDATE {$this->table} SET usr_password=? WHERE {$this->table}.usr_id=?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $usuario->getUSR_Password());
             $query->bindParam(2, $usuario->getUSR_Id());
@@ -141,8 +141,8 @@ class UsuarioModel implements IModel {
     public function validarAdministrador(Usuario $usuario) {
         $retorno = new stdClass();
         try {
-            $sql = "SELECT * FROM {$this->table} INNER JOIN TBL_Persona "
-                    . "on {$this->table}.USR_Id_Persona = TBL_Persona.PK_PSN_Id WHERE USR_Usuario=? and USR_Password=?";
+            $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_persona "
+                    . "on {$this->table}.usr_id_persona = tbl_persona.pk_psn_id WHERE usr_usuario=? and usr_password=?";
 
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $usuario->getUSR_Usuario());

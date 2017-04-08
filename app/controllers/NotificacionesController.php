@@ -54,5 +54,4 @@ class NotificacionesController implements IController {
             $this->view->show("public/home.php");
         }
     }
-
 }

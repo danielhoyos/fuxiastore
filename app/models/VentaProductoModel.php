@@ -54,7 +54,7 @@ class VentaProductoModel implements IModel {
         try{
             $obj instanceof VentaProducto;
             
-            $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_producto ON {$this->table} .PRO_Id = tbl_producto.PRO_Id WHERE  VEN_Id = ?";
+            $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_producto ON {$this->table} .pro_id = tbl_producto.pro_id WHERE ven_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam (1, $obj->getVEN_Id());
             $query->execute();

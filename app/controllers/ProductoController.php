@@ -199,5 +199,4 @@ class ProductoController implements IController {
             $this->view->show("public/home.php");
         }
     }
-
 }

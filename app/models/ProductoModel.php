@@ -3,7 +3,7 @@
 class ProductoModel implements IModel {
 
     private $conexion;
-    private $table = "TBL_Producto";
+    private $table = "tbl_producto";
     private $nameEntity = "Producto";
 
     function __construct() {
@@ -14,7 +14,7 @@ class ProductoModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Producto;
-            $sql = "DELETE FROM {$this->table} WHERE PRO_Id = ?";
+            $sql = "DELETE FROM {$this->table} WHERE pro_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPRO_Id());
             $query->execute();
@@ -30,7 +30,7 @@ class ProductoModel implements IModel {
     public function get($obj = null) {
         $retorno = new stdClass();
         try {
-            $sql = "SELECT * FROM {$this->table} ORDER BY PRO_Id DESC";
+            $sql = "SELECT * FROM {$this->table} ORDER BY pro_id DESC";
             $query = $this->conexion->prepare($sql);
             $query->execute();
             $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);
@@ -51,7 +51,7 @@ class ProductoModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Producto;
-            $sql = "SELECT * FROM {$this->table} WHERE PRO_Id = ?";
+            $sql = "SELECT * FROM {$this->table} WHERE pro_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPRO_Id());
             $query->execute();
@@ -74,7 +74,7 @@ class ProductoModel implements IModel {
         try {
             $buscar = trim($obj->productoBuscar);
             
-            $sql = "SELECT * FROM {$this->table} WHERE PRO_Nombre LIKE '%{$buscar}%' OR PRO_Id LIKE '%{$buscar}%'";
+            $sql = "SELECT * FROM {$this->table} WHERE pro_nombre LIKE '%{$buscar}%' OR pro_id LIKE '%{$buscar}%'";
             $query = $this->conexion->prepare($sql);
             $query->execute();
             $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);
@@ -91,7 +91,7 @@ class ProductoModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Producto;
-            $sql = "SELECT * FROM {$this->table} where PRO_Estado = ? ORDER BY PRO_Id DESC";
+            $sql = "SELECT * FROM {$this->table} where pro_estado = ? ORDER BY pro_id DESC";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPRO_Estado());
             $query->execute();
@@ -144,10 +144,10 @@ class ProductoModel implements IModel {
         try {
             $obj instanceof Producto;
             $sql = "UPDATE {$this->table} "
-                    . "SET PRO_Nombre=?, PRO_Talla=?, PRO_Precio_Compra=?, "
-                    . "PRO_Precio_Venta=?, FK_CAT_Id=?, FK_SUC_Id=?, "
-                    . "PRO_Estado=?, PRO_Fecha_Ingreso=?, FK_MAR_Id=? "
-                    . "WHERE PRO_Id = ?";
+                    . "SET pro_nombre=?, pro_talla=?, pro_precio_compra=?, "
+                    . "pro_precio_venta=?, fk_cat_id=?, fk_suc_id=?, "
+                    . "pro_estado=?, pro_fecha_ingreso=?, fk_mar_id=? "
+                    . "WHERE pro_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPRO_Nombre());
             $query->bindParam(2, $obj->getPRO_Talla());
@@ -176,7 +176,7 @@ class ProductoModel implements IModel {
         try {
             $obj instanceof Producto;
 
-            $sql = "UPDATE {$this->table} SET PRO_Estado = ? WHERE PRO_Id = ?";
+            $sql = "UPDATE {$this->table} SET pro_estado = ? WHERE pro_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPRO_Estado());
             $query->bindParam(2, $obj->getPRO_Id());
@@ -203,7 +203,7 @@ class ProductoModel implements IModel {
                 $f = 20 * $pag;
                 $i = $f - 20;
             }
-            $sql = "SELECT * FROM {$this->table} ORDER BY PRO_Id DESC LIMIT {$i},{$f}";
+            $sql = "SELECT * FROM {$this->table} ORDER BY pro_id DESC LIMIT {$i},{$f}";
             $query = $this->conexion->prepare($sql);
             $query->execute();
             $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);

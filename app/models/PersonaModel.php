@@ -3,7 +3,7 @@
 class PersonaModel implements IModel {
 
     private $conexion;
-    private $table = "TBL_Persona";
+    private $table = "tbl_persona";
     private $nameEntity = "Persona";
 
     public function __construct() {
@@ -14,7 +14,7 @@ class PersonaModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Persona;
-            $sql = "DELETE FROM {$this->table} WHERE PK_PSN_Id = ?";
+            $sql = "DELETE FROM {$this->table} WHERE pk_psn_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPK_PSN_Id());
             $query->execute();
@@ -35,7 +35,7 @@ class PersonaModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Persona;
-            $sql = "SELECT * FROM {$this->table} WHERE PK_PSN_Id = ?";
+            $sql = "SELECT * FROM {$this->table} WHERE pk_psn_id = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPK_PSN_Id());
             $query->execute();
@@ -56,7 +56,7 @@ class PersonaModel implements IModel {
         $retorno = new stdClass();
         try {
             $obj instanceof Persona;
-            $sql = "SELECT * FROM {$this->table} WHERE PSN_Identificacion = ?";
+            $sql = "SELECT * FROM {$this->table} WHERE psn_identificacion = ?";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPSN_Identificacion());
             $query->execute();
@@ -106,13 +106,13 @@ class PersonaModel implements IModel {
             $obj instanceof Persona;
 
             $sql = "UPDATE {$this->table} SET "
-                    . "PSN_Id_Tipo_Identificacion=?, "
-                    . "PSN_Identificacion=?, "
-                    . "PSN_Nombre=?, "
-                    . "PSN_Apellido=?,"
-                    . "PSN_Fecha_Nacimiento=?,"
-                    . "PSN_Telefono=? "
-                    . "WHERE PK_PSN_Id=?";
+                    . "psn_id_tipo_identificacion=?, "
+                    . "psn_identificacion=?, "
+                    . "psn_nombre=?, "
+                    . "psn_apellido=?,"
+                    . "psn_fecha_nacimiento=?,"
+                    . "psn_telefono=? "
+                    . "WHERE pk_psn_id=?";
 
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPSN_Id_Tipo_Identificacion());
@@ -140,10 +140,10 @@ class PersonaModel implements IModel {
             $obj instanceof Persona;
 
             $sql = "UPDATE {$this->table} SET "
-                    . "PSN_Nombre=?, "
-                    . "PSN_Apellido=?,"
-                    . "PSN_Telefono=? "
-                    . "WHERE PK_PSN_Id=?";
+                    . "psn_nombre=?, "
+                    . "psn_apellido=?,"
+                    . "psn_telefono=? "
+                    . "WHERE pk_psn_id=?";
 
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPSN_Nombre());
@@ -166,7 +166,7 @@ class PersonaModel implements IModel {
         $retorno = new stdClass();
 
         try {
-            $sql = "SELECT * FROM {$this->table} WHERE PSN_Rol = 'vendedor'";
+            $sql = "SELECT * FROM {$this->table} WHERE psn_rol = 'vendedor'";
             $query = $this->conexion->prepare($sql);
             $query->execute();
 
@@ -189,7 +189,7 @@ class PersonaModel implements IModel {
         $retorno = new stdClass();
 
         try {
-            $sql = "SELECT * FROM {$this->table} WHERE PSN_Rol = 'cliente' and MONTH(PSN_Fecha_Nacimiento) = MONTH(NOW())";
+            $sql = "SELECT * FROM {$this->table} WHERE psn_rol = 'cliente' and MONTH(psn_fecha_nacimiento) = MONTH(NOW())";
             $query = $this->conexion->prepare($sql);
             $query->execute();
 

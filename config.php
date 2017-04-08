@@ -19,5 +19,4 @@ $config->set("classFolder","app/class_/" );
 $config->set("assetsFolder","assets/" );
 $config->set("facturasFolder","facturas/" );
 $config->set("rootHTTP","http://{$_SERVER['HTTP_HOST']}/{$folderApp}/");
-
 ?>
