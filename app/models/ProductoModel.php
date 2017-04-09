@@ -198,12 +198,10 @@ class ProductoModel implements IModel {
         try {
             if($pag == 1){
                 $i = 0;
-                $f = 20 * $pag;
             }else{
-                $f = 20 * $pag;
-                $i = $f - 20;
+                $i = ($pag-1)*20;
             }
-            $sql = "SELECT * FROM {$this->table} ORDER BY pro_id DESC LIMIT {$i},{$f}";
+            $sql = "SELECT * FROM {$this->table} ORDER BY pro_id DESC LIMIT {$i},20";
             $query = $this->conexion->prepare($sql);
             $query->execute();
             $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);

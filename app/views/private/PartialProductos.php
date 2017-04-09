@@ -1,6 +1,6 @@
 <?php
-$config = Config::singleton();
-$user = AppController::$login;
+     $config = Config::singleton();
+     $user = AppController::$login;
 ?>
 
 <html>
@@ -26,90 +26,99 @@ $user = AppController::$login;
                     <th>CATEGORIA</th>
                     <th>ALMACÉN</th>
                     <?php
-                    if (!isset($_REQUEST["estado"]) || $_REQUEST["estado"] !== "vendidos") {
-                        echo "<th>EDITAR</th>";
-                    }
+                         if (!isset($_REQUEST["estado"]) || $_REQUEST["estado"] !== "vendidos") {
+                             ?>
+                             <th>EDITAR</th>
+                             <?php
+                         }
                     ?>
 
                     <?php
-                    if (!isset($_REQUEST["estado"]) || ($_REQUEST["estado"] == "todos")) {
-                        echo "<th>ESTADO</th>";
-                    }
+                         if (!isset($_REQUEST["estado"]) || ($_REQUEST["estado"] == "todos")) {
+                             ?>
+                             <th>ESTADO</th>
+                             <?php
+                         }
                     ?>
                     <th>INGRESO</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                foreach ($productos as $p) {
-                    $p instanceof Producto;
-                    foreach ($categorias as $c) {
-                        $c instanceof Categoria;
+                     foreach ($productos as $p) {
+                         $p instanceof Producto;
+                         foreach ($categorias as $c) {
+                             $c instanceof Categoria;
 
-                        $categoria = "";
-                        if ($c->getCAT_Id() == $p->getFK_CAT_Id()) {
-                            $categoria = $c->getCAT_Nombre();
-                            break;
-                        }
-                    }
-                    foreach ($sucursales as $s) {
-                        $s instanceof Sucursal;
+                             $categoria = "";
+                             if ($c->getCAT_Id() == $p->getFK_CAT_Id()) {
+                                 $categoria = $c->getCAT_Nombre();
+                                 break;
+                             }
+                         }
+                         foreach ($sucursales as $s) {
+                             $s instanceof Sucursal;
 
-                        $sucursal = "";
-                        if ($s->getSUC_Id() == $p->getFK_SUC_Id()) {
-                            $sucursal = $s->getSUC_Nombre();
-                            break;
-                        }
-                    }
-                    foreach ($marcas as $m) {
-                        $m instanceof Marca;
+                             $sucursal = "";
+                             if ($s->getSUC_Id() == $p->getFK_SUC_Id()) {
+                                 $sucursal = $s->getSUC_Nombre();
+                                 break;
+                             }
+                         }
+                         foreach ($marcas as $m) {
+                             $m instanceof Marca;
 
-                        $marca = "";
-                        if ($m->getMar_id() == $p->getFK_MAR_Id()) {
-                            $marca = $m->getMar_nombre();
-                            break;
-                        }
-                    }
-                    $datos = "<tr>
-                                    <td>{$p->getPRO_Id()}</td>
-                                    <td>{$p->getPRO_Nombre()}</td>
-                                    <td>{$p->getPRO_Talla()}</td>
-                                    <td>$ {$p->getPRO_Precio_Compra()}</td>
-                                    <td>$ {$p->getPRO_Precio_Venta()}</td>
-                                    <td>{$marca}</td>
-                                    <td>{$categoria}</td>
-                                    <td>{$sucursal}</td>";
-                    if (!isset($_REQUEST["estado"]) || $_REQUEST["estado"] !== "vendidos") {
-
-                        if ($p->getPRO_Estado() == "vendido") {
-                            $datos .= "<td><img title='Los Articulos Vendidos No se Pueden Editar' width = 20px heigth = 20px src = '{$config->get("rootHTTP")}{$config->get("assetsFolder")}icon_sold.png'/></td>";
-                        } else {
-                            $datos .= "<td><img class = 'editar_producto' id = '{$p->getPRO_Id()}' width = 20px heigth = 20px src = '{$config->get("rootHTTP")}{$config->get("assetsFolder")}ver_edit.png'/></td>";
-                        }
-                    }
-
-                    $estado = strtoupper($p->getPRO_Estado());
-
-                    if (!isset($_REQUEST["estado"]) || ($_REQUEST["estado"] == "todos")) {
-                        $datos .= "<td>{$estado}</td>";
-                    }
-                    $datos.="<td>{$p->getPRO_Fecha_Ingreso()}</td>";
-                    $datos .= "</tr><br><br>";
-                    $datos .= "<a></a><a></a>";
-
-                    echo $datos;
-                    
-                }
-                $pag = "";
-                $numPag = ceil($cantProd / 20);
-                    
-                    for($i=1;$i<=$numPag;$i++){
-                        $pag.= "<a href='?controller=Producto&action=productos&estado=todos&pag={$i}'>{$i}</a> ";
-                    }
-                    echo $pag;
+                             $marca = "";
+                             if ($m->getMar_id() == $p->getFK_MAR_Id()) {
+                                 $marca = $m->getMar_nombre();
+                                 break;
+                             }
+                         }
+                         $datos = "<tr>
+                                <td>{$p->getPRO_Id()}</td>
+                                <td>{$p->getPRO_Nombre()}</td>
+                                <td>{$p->getPRO_Talla()}</td>
+                                <td>$ {$p->getPRO_Precio_Compra()}</td>
+                                <td>$ {$p->getPRO_Precio_Venta()}</td>
+                                <td>{$marca}</td>
+                                <td>{$categoria}</td>
+                                <td>{$sucursal}</td>";
+                         if (!isset($_REQUEST["estado"]) || $_REQUEST["estado"] !== "vendidos") {
+                             if ($p->getPRO_Estado() == "vendido") {
+                                 $datos .= "<td><img title='Los Articulos Vendidos No se Pueden Editar' width=20px heigth=20px src='{$config->get("rootHTTP")}{$config->get("assetsFolder")}icon_sold.png'/></td>";
+                             } else {
+                                 $datos .= "<td><img class='editar_producto' id='{$p->getPRO_Id()}' width=20px heigth=20px src='{$config->get("rootHTTP")}{$config->get("assetsFolder")}ver_edit.png'/></td>";
+                             }
+                         }
+                         $estado = strtoupper($p->getPRO_Estado());
+                         if (!isset($_REQUEST["estado"]) || ($_REQUEST["estado"] == "todos")) {
+                             $datos .= "<td>{$estado}</td>";
+                         }
+                         $datos.="<td>{$p->getPRO_Fecha_Ingreso()}</td>";
+                         $datos .= "</tr>";
+                         echo $datos;
+                     }
                 ?>
-
             </tbody>
         </table>
+        <?php
+             $anterior = "";
+             if(isset($_REQUEST["pag"])){
+                 $anterior = $_REQUEST["pag"] - 1;
+             }
+             $pag = "<br><br><button><a href='?controller=Producto&action=productos&estado=todos&pag={$anterior}'>ANTERIOR</a></button>";
+             $numPag = ceil($cantProd / 20);
+             for ($i = 1; $i <= $numPag; $i++) {
+                 $pag.= "<a href='?controller=Producto&action=productos&estado=todos&pag={$i}'>{$i}</a> ";
+             }
+             $siguiente = "";
+             if(isset($_REQUEST["pag"])){
+                 $siguiente = $_REQUEST["pag"] + 1;
+             }else{
+                 $siguiente = 2;
+             }
+             $pag .= "<button><a href='?controller=Producto&action=productos&estado=todos&pag={$siguiente}'>SIGUIENTE</a></button>";
+             echo $pag;
+        ?>
     </body>
 </html>
