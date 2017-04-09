@@ -100,25 +100,49 @@
                      }
                 ?>
             </tbody>
-        </table>
+        </table><br><br>
         <?php
-             $anterior = "";
-             if(isset($_REQUEST["pag"])){
-                 $anterior = $_REQUEST["pag"] - 1;
-             }
-             $pag = "<br><br><button><a href='?controller=Producto&action=productos&estado=todos&pag={$anterior}'>ANTERIOR</a></button>";
-             $numPag = ceil($cantProd / 20);
-             for ($i = 1; $i <= $numPag; $i++) {
-                 $pag.= "<a href='?controller=Producto&action=productos&estado=todos&pag={$i}'>{$i}</a> ";
-             }
-             $siguiente = "";
-             if(isset($_REQUEST["pag"])){
-                 $siguiente = $_REQUEST["pag"] + 1;
+             $prev;
+             $next;
+             $dataPag = "";
+             $numPag = ceil($cantProd / 50);
+             $estado = isset($_REQUEST["estado"]) ? "estado={$_REQUEST["estado"]}" : "estado=todos"; 
+             $pag = isset($_REQUEST["pag"])?$_REQUEST["pag"]:1;
+
+             $prev = isset($_REQUEST["pag"]) ? $_REQUEST["pag"] - 1 : 0;
+             $dataPag.= $prev > 0 ? "<button><a href='?controller=Producto&action=productos&{$estado}&pag={$prev}'><</a></button>" : "";
+             
+             if($numPag <= 20){
+                 $minPag = 1;
+                 $maxPag = $numPag;
              }else{
-                 $siguiente = 2;
+                 if($pag<=10){
+                     $minPag = 1;
+                     $maxPag = 20;
+                 }else{
+                     if($pag > ($numPag-10)){
+                         $maxPag = $numPag;
+                         $minPag = $numPag-20;
+                     }else{
+                        $minPag = $pag-10;
+                        $maxPag = $pag+10;
+                     }
+                 }
              }
-             $pag .= "<button><a href='?controller=Producto&action=productos&estado=todos&pag={$siguiente}'>SIGUIENTE</a></button>";
-             echo $pag;
+         
+             for ($i=$minPag; $i<=$maxPag; $i++) {
+                   if($pag == $i){
+                       $class="link-pag";
+                   }else{
+                       $class="";
+                   }
+                 $dataPag .= "<a class='{$class}' href='?controller=Producto&action=productos&{$estado}&pag={$i}'>{$i}</a> ";
+             }
+          
+             $next = isset($_REQUEST["pag"]) ? $_REQUEST["pag"] + 1 : 2;
+             $dataPag.= $next<= $numPag?"<button><a href='?controller=Producto&action=productos&{$estado}&pag={$next}'>></a></button>":"";
+             
+             echo $dataPag;
         ?>
     </body>
 </html>

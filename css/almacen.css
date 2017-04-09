@@ -320,6 +320,10 @@
 .tablasProductos tr:first-child{
     border-top: none; 
 }
+
+.link-pag{
+    background-color: red;
+}
 /* FIN PRODUCTOS */
 
 
