@@ -321,12 +321,37 @@
     border-top: none; 
 }
 
-.link-pag{
-    background-color: red;
+.paginacion{
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+.paginacion a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: normal;
+}
+
+.button-opc-pag, .button-pag-select, .button-num-pag{
+    padding: 0.5%;
+    border-radius: 3px;
+    margin: 0 0.5px;
+}
+.button-opc-pag, .button-num-pag{
+    background-color: rgba(0,0,0,0.5);
+}
+.button-pag-select{
+    background-color: #ff0b48;
+}
+.button-opc-pag{
+    border: 1px solid #ff0b48;
+    color: #ff0b48 !important;
+    font-weight: bold !important;
+}
+.button-num-pag, .button-pag-select{
+    border: 1px solid #3d3d3d;
 }
 /* FIN PRODUCTOS */
-
-
 /* FACTURA VENTA*/
 .ver_factura_venta{
     background-color: rgba(255, 255, 255, 0.7);
