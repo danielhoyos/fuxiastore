@@ -102,45 +102,46 @@
             </tbody>
         </table><br><br>
         <?php
-             $prev;
-             $next;
-             $dataPag = "<div class='paginacion'>";
-             $dataPag .= "<a class='button-opc-pag' href='?controller=Producto&action=productos&{$estado}&pag=1'>INICIO</a>";
-             $numPag = ceil($cantProd / 50);
-             $estado = isset($_REQUEST["estado"]) ? "estado={$_REQUEST["estado"]}" : "estado=todos"; 
-             $pag = isset($_REQUEST["pag"])?$_REQUEST["pag"]:1;
+             if (isset($cantProd) && $cantProd>50) {
+                 $prev;
+                 $next;
+                 $estado = isset($_REQUEST["estado"]) ? "estado={$_REQUEST["estado"]}" : "estado=todos";
+                 $dataPag = "<div class='paginacion'>";
+                 $dataPag .= "<a class='button-opc-pag' href='?controller=Producto&action=productos&{$estado}&pag=1'>INICIO</a>";
+                 $numPag = ceil($cantProd / 50);
+                 $pag = isset($_REQUEST["pag"]) ? $_REQUEST["pag"] : 1;
 
-             $prev = isset($_REQUEST["pag"]) ? $_REQUEST["pag"] - 1 : 0;
-             $dataPag.= $prev > 0 ? "<a class='button-opc-pag' href='?controller=Producto&action=productos&{$estado}&pag={$prev}'><</a>" : "";
-             
-             if($numPag <= 20){
-                 $minPag = 1;
-                 $maxPag = $numPag;
-             }else{
-                 if($pag<=10){
+                 $prev = isset($_REQUEST["pag"]) ? $_REQUEST["pag"] - 1 : 0;
+                 $dataPag.= $prev > 0 ? "<a class='button-opc-pag' href='?controller=Producto&action=productos&{$estado}&pag={$prev}'><</a>" : "";
+
+                 if ($numPag <= 20) {
                      $minPag = 1;
-                     $maxPag = 20;
-                 }else{
-                     if($pag > ($numPag-10)){
-                         $maxPag = $numPag;
-                         $minPag = $numPag-20;
-                     }else{
-                        $minPag = $pag-10;
-                        $maxPag = $pag+10;
+                     $maxPag = $numPag;
+                 } else {
+                     if ($pag <= 10) {
+                         $minPag = 1;
+                         $maxPag = 20;
+                     } else {
+                         if ($pag > ($numPag - 10)) {
+                             $maxPag = $numPag;
+                             $minPag = $numPag - 20;
+                         } else {
+                             $minPag = $pag - 10;
+                             $maxPag = $pag + 10;
+                         }
                      }
                  }
+                 
+                 for ($i = $minPag; $i <= $maxPag; $i++) {
+                     $class = $pag == $i ? "button-pag-select" : "button-num-pag";
+                     $dataPag .= "<a class='{$class}' href='?controller=Producto&action=productos&{$estado}&pag={$i}'>{$i}</a>";
+                 }
+                 $next = isset($_REQUEST["pag"]) ? $_REQUEST["pag"] + 1 : 2;
+                 $dataPag.= $next <= $numPag ? "<a class='button-opc-pag' href='?controller=Producto&action=productos&{$estado}&pag={$next}'>></a>" : "";
+                 $dataPag.= "<a class='button-opc-pag' href='?controller=Producto&action=productos&{$estado}&pag={$numPag}'>FIN</a>";
+                 $dataPag.= "</div>";
+                 echo $dataPag;
              }
-         
-             for ($i=$minPag; $i<=$maxPag; $i++) {
-                 $class = $pag == $i?"button-pag-select":"button-num-pag";
-                 $dataPag .= "<a class='{$class}' href='?controller=Producto&action=productos&{$estado}&pag={$i}'>{$i}</a>";
-             }
-          
-             $next = isset($_REQUEST["pag"]) ? $_REQUEST["pag"] + 1 : 2;
-             $dataPag.= $next<= $numPag?"<a class='button-opc-pag' href='?controller=Producto&action=productos&{$estado}&pag={$next}'>></a>":"";
-             $dataPag.= "<a class='button-opc-pag' href='?controller=Producto&action=productos&{$estado}&pag={$numPag}'>FIN</a>";
-             $dataPag.= "</div>";
-             echo $dataPag;
         ?>
     </body>
 </html>

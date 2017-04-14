@@ -36,16 +36,12 @@ class ProductoController implements IController {
 
             $marcaModel = new MarcaModel();
             $marcas = $marcaModel->get();
-            
-            $cantProd = $productoModel->getCantProd();
             $todos = false;
 
-            if (!isset($_REQUEST["estado"])) {
+            if (!isset($_REQUEST["estado"]) || $_REQUEST["estado"] === "todos") {
                 $todos = true;
             } else {
-                if ($_REQUEST["estado"] === "todos") {
-                    $todos = true;
-                } else if ($_REQUEST["estado"] === "disponibles") {
+                if ($_REQUEST["estado"] === "disponibles") {
                     $producto->setPRO_Estado("disponible");
                 } else if ($_REQUEST["estado"] === "nodisponibles") {
                     $producto->setPRO_Estado("no disponible");
@@ -53,17 +49,10 @@ class ProductoController implements IController {
                     $producto->setPRO_Estado("vendido");
                 }
             }
-            if(!isset($_REQUEST["pag"])){
-                $pag = 1;
-            }else{
-                $pag = $_REQUEST["pag"];
-            }
-            if ($todos) {
-                $productos = $productoModel->getProd($pag);
-            } else {
-                $productos = $productoModel->getByEstado($producto);
-            }
-
+            $pag = !isset($_REQUEST["pag"])?1:$_REQUEST["pag"];
+            $productos = $todos?$productos = $productoModel->getProd($pag):$productoModel->getByEstado($producto, $pag);
+            $cantProd = isset($_REQUEST["estado"])?$productoModel->getCantProd($producto->getPRO_Estado()):$productoModel->getCantProd();
+            
             $vars["categorias"] = $categorias->data;
             $vars["sucursales"] = $sucursales->data;
             $vars["productos"] = $productos->data;

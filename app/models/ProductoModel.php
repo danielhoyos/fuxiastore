@@ -1,15 +1,12 @@
 <?php
 
 class ProductoModel implements IModel {
-
     private $conexion;
     private $table = "tbl_producto";
     private $nameEntity = "Producto";
-
     function __construct() {
         $this->conexion = SPDO::singleton();
     }
-
     public function delete($obj) {
         $retorno = new stdClass();
         try {
@@ -26,7 +23,6 @@ class ProductoModel implements IModel {
         }
         return $retorno;
     }
-
     public function get($obj = null) {
         $retorno = new stdClass();
         try {
@@ -46,7 +42,6 @@ class ProductoModel implements IModel {
         }
         return $retorno;
     }
-
     public function getById($obj) {
         $retorno = new stdClass();
         try {
@@ -68,7 +63,6 @@ class ProductoModel implements IModel {
         }
         return $retorno;
     }
-
     public function getBuscar($obj) {
         $retorno = new stdClass();
         try {
@@ -86,12 +80,12 @@ class ProductoModel implements IModel {
         }
         return $retorno;
     }
-
-    public function getByEstado($obj) {
+    public function getByEstado($obj, $pag) {
         $retorno = new stdClass();
         try {
             $obj instanceof Producto;
-            $sql = "SELECT * FROM {$this->table} where pro_estado = ? ORDER BY pro_id DESC";
+            $i = $pag == 1?0:($pag-1)*50;
+            $sql = "SELECT * FROM {$this->table} where pro_estado = ? ORDER BY pro_id DESC LIMIT {$i},50";
             $query = $this->conexion->prepare($sql);
             $query->bindParam(1, $obj->getPRO_Estado());
             $query->execute();
@@ -108,7 +102,6 @@ class ProductoModel implements IModel {
         }
         return $retorno;
     }
-
     public function insert($obj) {
         $retorno = new stdClass();
 
@@ -138,7 +131,6 @@ class ProductoModel implements IModel {
 
         return $retorno;
     }
-
     public function update($obj) {
         $retorno = new stdClass();
         try {
@@ -169,7 +161,6 @@ class ProductoModel implements IModel {
         }
         return $retorno;
     }
-
     public function updateEstado($obj) {
         $retorno = new stdClass();
 
@@ -192,15 +183,10 @@ class ProductoModel implements IModel {
 
         return $retorno;
     }
-    
     public function getProd($pag){
         $retorno = new stdClass();
         try {
-            if($pag == 1){
-                $i = 0;
-            }else{
-                $i = ($pag-1)*50;
-            }
+            $i = $pag == 1?0:($pag-1)*50;
             $sql = "SELECT * FROM {$this->table} ORDER BY pro_id DESC LIMIT {$i},50";
             $query = $this->conexion->prepare($sql);
             $query->execute();
@@ -217,13 +203,15 @@ class ProductoModel implements IModel {
         }
         return $retorno;
     }
-    public function getCantProd() {
+    public function getCantProd($est = "") {
         $retorno = new stdClass();
         try {
-            $sql = "SELECT * FROM {$this->table}";
+            $estado = $est == ""?"":" WHERE PRO_Estado = '{$est}'";
+            
+            $sql = "SELECT COUNT(*) FROM {$this->table} {$estado}";
             $query = $this->conexion->prepare($sql);
             $query->execute();
-            $retorno->data = $query->rowCount();
+            $retorno->data = $query->fetchColumn();
             $retorno->status = 200;
             $retorno->msg = "{$this->nameEntity} encontrada";
         } catch (PDOException $e) {
