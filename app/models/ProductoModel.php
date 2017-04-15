@@ -63,11 +63,12 @@ class ProductoModel implements IModel {
         }
         return $retorno;
     }
-    public function getBuscar($obj) {
+    public function getBuscar($obj, $pag) {
         $retorno = new stdClass();
         try {
             $buscar = trim($obj->productoBuscar);
-            $sql = "SELECT * FROM {$this->table} WHERE pro_nombre LIKE '%{$buscar}%' OR pro_id LIKE '%{$buscar}%'";
+            $i = $pag == 1?0:($pag-1)*50;
+            $sql = "SELECT * FROM {$this->table} WHERE pro_nombre LIKE '%{$buscar}%' OR pro_id LIKE '%{$buscar}%' ORDER BY PRO_Id DESC LIMIT {$i},50";
             $query = $this->conexion->prepare($sql);
             $query->execute();
             $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);
@@ -202,12 +203,13 @@ class ProductoModel implements IModel {
         }
         return $retorno;
     }
-    public function getCantProd($est = "") {
+    public function getCantProd($est = "", $prodBuscar = "") {
         $retorno = new stdClass();
         try {
             $estado = $est == ""?"":" WHERE PRO_Estado = '{$est}'";
+            $prodBuscar = $prodBuscar == ""?"":" WHERE pro_nombre LIKE '%{$prodBuscar}%' OR pro_id LIKE '%{$prodBuscar}%'";
             
-            $sql = "SELECT COUNT(*) FROM {$this->table} {$estado}";
+            $sql = "SELECT COUNT(*) FROM {$this->table} {$estado} {$prodBuscar}";
             $query = $this->conexion->prepare($sql);
             $query->execute();
             $retorno->data = $query->fetchColumn();

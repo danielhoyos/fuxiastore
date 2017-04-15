@@ -51,8 +51,15 @@
                  }
                  $pag = !isset($_REQUEST["pag"]) ? 1 : $_REQUEST["pag"];
                  $productos = $todos ? $productos = $productoModel->getProd($pag) : $productoModel->getByEstado($producto, $pag);
-                 $cantProd = isset($_REQUEST["estado"]) ? $productoModel->getCantProd($producto->getPRO_Estado()) : $productoModel->getCantProd();
 
+                 if(isset($_REQUEST["estado"])){
+                     $cantProd = $productoModel->getCantProd($producto->getPRO_Estado(),"");
+                 }else if(isset($_REQUEST["producto_buscar"])){
+                     $cantProd = $productoModel->getCantProd("",$_REQUEST["producto_buscar"]);
+                 }else{
+                     $cantProd = $productoModel->getCantProd();
+                 }
+                 
                  $vars["categorias"] = $categorias->data;
                  $vars["sucursales"] = $sucursales->data;
                  $vars["productos"] = $productos->data;
@@ -175,12 +182,23 @@
                  $producto = new stdClass();
                  $productoModel = new ProductoModel();
                  $producto->productoBuscar = $_REQUEST["producto_buscar"];
-                 $r = $productoModel->getBuscar($producto);
+                 
+                 if(isset($_REQUEST["estado"])){
+                     $cantProd = $productoModel->getCantProd($producto->getPRO_Estado(),"");
+                 }else if($_REQUEST["action"] == "productoBuscar"){
+                     $cantProd = $productoModel->getCantProd("",$_REQUEST["producto_buscar"]);
+                 }else{
+                     $cantProd = $productoModel->getCantProd();
+                 }
+                 $pag = !isset($_REQUEST["pag"]) ? 1 : $_REQUEST["pag"];
+                 $r = $productoModel->getBuscar($producto, $pag);
 
                  $vars["categorias"] = $categorias->data;
                  $vars["sucursales"] = $sucursales->data;
                  $vars["productos"] = $r->data;
                  $vars["marcas"] = $marcas->data;
+                 $vars["cantProd"] = $cantProd->data;
+                 $vars["prodBuscar"] = $_REQUEST["producto_buscar"];
 
                  $this->view->show("private/Productos.php", $vars);
              } else {

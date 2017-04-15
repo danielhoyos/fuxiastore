@@ -32,7 +32,6 @@ $config = Config::singleton();
                 </div>
             </form>
             <button type="submit" id="validarAdministrador">Ingresar</button>
-
         </div>
     </body>
 </html>

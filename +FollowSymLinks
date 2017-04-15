@@ -1,0 +1,59 @@
+[33mcommit 2a1f5bb199e7d5f5761ff5d3222dacef77c8f7aa[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Fri Apr 14 20:53:29 2017 -0500
+
+    Version 1.9 Productos Buscar completo
+
+[33mcommit ef991ee2e1865f5337f8da61cd402fc652a16b21[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Fri Apr 14 18:17:43 2017 -0500
+
+    Versión 1.8 Productos paginados por categorias completo
+
+[33mcommit d7d4dc15e5f7ce370d56af37edad7f219a1b425a[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Sun Apr 9 23:10:45 2017 -0500
+
+    Version 1.7 Estilos y funcionamiento completo de la paginación
+
+[33mcommit 7ebb7051f8c9c4c350ba7773f0e14290a401f700[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Sun Apr 9 02:16:55 2017 -0500
+
+    Version 1.6 Creacion de la paginacion, falta implementar los botones de inicio y fin para todos los productos y la paginacion funcional para los estados de productos
+
+[33mcommit 280fabe892ca9953e597bff2e80d4bb5ac4ed614[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Sat Apr 8 20:06:38 2017 -0500
+
+    Version 1.5 Modificación de paginacion correccion del espacio al inicio de la pagina, anterior y siguiente bien pero falta implementacion
+
+[33mcommit 41191154f87fa3de366fe00edc9bbf0eab6e331c[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Sat Apr 8 18:23:15 2017 -0500
+
+    Version 1.4 Modificaciónes de archivos para el servidor incluida la base de datos
+
+[33mcommit 54ade70675c1b0b79a917b8d96d3b321f6f5bff6[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Tue Apr 4 01:27:30 2017 -0500
+
+    Version 1.3 Modelo de Paginación de Productos
+
+[33mcommit 3577de17d6711d3275193ef32458a9b34125e7fa[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Mon Apr 3 00:17:11 2017 -0500
+
+    Version 1.2 - Factura Actualizada 4 Cambios
+
+[33mcommit 3cc05f3786db9bde2474ce97a7acc41f8cdc69e6[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Sun Apr 2 23:09:36 2017 -0500
+
+    Version 1.1 - Productos y subcategorias organizadas Descendentemente
+
+[33mcommit 702950b7f55e17349ca679f7adb461741bbf85cd[m
+Author: Daniel Hoyos <danielhoyos350@gmail.com>
+Date:   Sun Apr 2 22:55:46 2017 -0500
+
+    Version Inicial - 02/Abril/2017

@@ -27,7 +27,7 @@ body{
 #contenedor_principal{
     position: relative;
     width: 1000px;
-    min-height: 500px;
+    min-height: 700px;
     background-color: rgba(0, 0, 6, 0.6);
     margin: auto;
     padding: 10px 0 20px 0;
