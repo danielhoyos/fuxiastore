@@ -48,7 +48,28 @@ class SeparadoModel implements IModel {
         }
         return $retorno;
     }
-
+    public function getSep($pag) {
+        $retorno = new stdClass();
+        $i = $pag == 1?0:($pag-1)*50;
+        try {
+            $sql = "SELECT * FROM {$this->table} INNER JOIN tbl_producto "
+                    . "ON {$this->table}.fk_pro_id = tbl_producto.pro_id INNER JOIN tbl_persona "
+                    . "ON {$this->table}.fk_cli_id = tbl_persona.pk_psn_id ORDER BY {$this->table}.sep_id DESC LIMIT {$i},50";
+            $query = $this->conexion->prepare($sql);
+            $query->execute();
+            $retorno->data = $query->fetchAll(PDO::FETCH_CLASS, $this->nameEntity);
+            $retorno->status = 200;
+            $retorno->msg = "Consulta exitosa";
+            if (count($retorno->data) === 0) {
+                $retorno->status = 201;
+                $retorno->msg = "No hay registros en la base de datos.";
+            }
+        } catch (PDOException $e) {
+            $retorno->msg = $e->getMessage();
+            $retorno->status = 501;
+        }
+        return $retorno;
+    }
     public function getById($obj) {
         $retorno = new stdClass();
         try {
@@ -157,6 +178,22 @@ class SeparadoModel implements IModel {
         } catch (Exception $e) {
             $retorno->status = 501;
             $retorno->msg = $e->getMessage();
+        }
+        return $retorno;
+    }
+    
+    public function getCantSep() {
+        $retorno = new stdClass();
+        try {
+            $sql = "SELECT COUNT(*) FROM {$this->table}";
+            $query = $this->conexion->prepare($sql);
+            $query->execute();
+            $retorno->data = $query->fetchColumn();
+            $retorno->status = 200;
+            $retorno->msg = "{$this->nameEntity} encontrada";
+        } catch (PDOException $e) {
+            $retorno->msg = $e->getMessage();
+            $retorno->status = 501;
         }
         return $retorno;
     }

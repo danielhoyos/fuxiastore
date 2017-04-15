@@ -21,14 +21,18 @@ class SeparadoController implements IController {
             require_once $config->get("rootFolder") . $config->get("entitiesFolder") . "Persona.php";
             require_once $config->get("rootFolder") . $config->get("modelsFolder") . "PersonaModel.php";
 
+            $pag = !isset($_REQUEST["pag"]) ? 1 : $_REQUEST["pag"];
+            
             $personaModel = new PersonaModel();
             $vendedores = $personaModel->getVendedores();
 
             $separadoModel = new SeparadoModel();
-            $separados = $separadoModel->get();
+            $separados = $separadoModel->getSep($pag);
+            $cantSep = $separadoModel->getCantSep();
 
             $vars["separados"] = $separados->data;
             $vars["vendedores"] = $vendedores->data;
+            $vars["cantSep"] = $cantSep->data;
             $this->view->show("private/Separados.php", $vars);
         } else {
             $this->view->show("public/home.php");

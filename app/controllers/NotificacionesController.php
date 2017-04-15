@@ -12,7 +12,7 @@ class NotificacionesController implements IController {
         
     }
 
-    public function notificaciones() {
+    public function home() {
         $config = Config::singleton();
 
         if (AppController::$login) {
@@ -43,7 +43,7 @@ class NotificacionesController implements IController {
             
             $marcaModel = new MarcaModel();
             $marcas = $marcaModel->get();
-
+            
             $vars["categorias"] = $categorias->data;
             $vars["sucursales"] = $sucursales->data;
             $vars["productos"] = $productos->data;

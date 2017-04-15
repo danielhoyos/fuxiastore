@@ -45,7 +45,8 @@ $user = AppController::$login;
                             <td>$<?php echo $totalVentasGanancia; ?></td>
                         </tr>
                     </table>
-                </div>
+                </div><br><br>
+                <button><a href="?controller=Notificaciones">NOTIFICACIONES</a></button>
             </div>
             <div id="section">
                 <input class="buscarVentaIdentificacion" type="number" placeholder="Numero de Identificación" name="venta_identificacion_buscar" id="venta_identificacion_buscar"/>

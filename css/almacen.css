@@ -203,7 +203,6 @@
 .icon_buscar, .icon_buscar_factura, .icon_buscar_separado{
     position: absolute;
     width: 37px !important;
-    height: 39px !important;
     color: white;
     background-color: #ff0b48;
     padding: 10px 0;
@@ -214,6 +213,7 @@
     left: 94%;
     border-bottom-right-radius: 50px;
     border-top-right-radius: 50px;
+    height: 39px !important;
 }
 
 .icon_buscar_factura{
@@ -250,7 +250,7 @@
 
 .tablasProductos{
     width: 980px;
-    font-size: 13px;
+    font-size: 12.8px;
 }
 
 .tablaContabilidad, .tablasProductos{
@@ -476,6 +476,13 @@ input[type=number]::-webkit-inner-spin-button {
         0 15px 30px 0 rgba(255,255,255,.25) inset,
         0 2px 7px 0 rgba(0,0,0,.2);
     padding: 20px;
+}
+
+.ver_separado{
+    background-color: black;
+    width: 30px !important;
+    border: none;
+    color: #ff0f48;
 }
 /* FIN SEPARADOS */
 

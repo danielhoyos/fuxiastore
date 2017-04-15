@@ -34,7 +34,6 @@ $user = AppController::$login;
                 "VENTA" => "?controller=Venta&action=ventas",
                 "SEPARADOS" => "?controller=Separado&action=separados",
                 "CONTABILIDAD" => "?controller=Contabilidad&action=contabilidad",
-                "NOTIFICACIONES" => "?controller=Notificaciones&action=notificaciones",
             ];
 
             foreach ($menu as $key => $value) {

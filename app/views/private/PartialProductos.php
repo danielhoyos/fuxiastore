@@ -1,7 +1,7 @@
 <?php
      $config = Config::singleton();
      $user = AppController::$login;
-     
+
      if (count($productos) > 0) {
          ?>
          <table class="tablasProductos">
@@ -95,10 +95,10 @@
          if (isset($cantProd) && $cantProd > 50) {
              $prev;
              $next;
-             if(isset($prodBuscar)){
-                 $productoBuscar = "&producto_buscar=".$prodBuscar;
+             if (isset($prodBuscar)) {
+                 $productoBuscar = "&producto_buscar=" . $prodBuscar;
                  $estado = "";
-             }else{
+             } else {
                  $productoBuscar = "";
                  $estado = isset($_REQUEST["estado"]) ? "estado={$_REQUEST["estado"]}" : "estado=todos";
              }
@@ -138,8 +138,6 @@
              $dataPag.= "</div>";
              echo $dataPag;
          }
-         ?>
-         <?php
      } else {
          ?>
          <center><h3>NO SE ENCONTRARON PRODUCTOS...</h3></center>
