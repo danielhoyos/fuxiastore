@@ -67,7 +67,6 @@ class ProductoModel implements IModel {
         $retorno = new stdClass();
         try {
             $buscar = trim($obj->productoBuscar);
-            
             $sql = "SELECT * FROM {$this->table} WHERE pro_nombre LIKE '%{$buscar}%' OR pro_id LIKE '%{$buscar}%'";
             $query = $this->conexion->prepare($sql);
             $query->execute();

@@ -43,21 +43,6 @@ CREATE TABLE `tbl_marca` (
   `prov_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
---
--- Volcado de datos para la tabla `tbl_marca`
---
-
-INSERT INTO `tbl_marca` (`mar_id`, `mar_nombre`, `prov_id`) VALUES
-(1, 'SJ Jeans', 1),
-(2, 'Gup''s Jeans', 1),
-(3, 'Signos Jeans', 2),
-(4, 'Karoshe Jeans', 2),
-(5, 'Joy Staz Jeans', 3),
-(6, 'Lixis Jeans', 3),
-(7, 'Mikaela Jeans', 4),
-(8, 'Lupe Jeans', 5),
-(9, 'Otro', 6);
-
 -- --------------------------------------------------------
 
 --
@@ -74,14 +59,6 @@ CREATE TABLE `tbl_persona` (
   `PSN_Telefono` varchar(25) NOT NULL,
   `PSN_Rol` enum('administrador','vendedor','cliente') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_persona`
---
-
-INSERT INTO `tbl_persona` (`PK_PSN_Id`, `PSN_Id_Tipo_Identificacion`, `PSN_Identificacion`, `PSN_Nombre`, `PSN_Apellido`, `PSN_Fecha_Nacimiento`, `PSN_Telefono`, `PSN_Rol`) VALUES
-(1, 1, '1061791895', 'Daniel', 'Hoyos', '1996-06-30', '3508957850', 'administrador');
-
 -- --------------------------------------------------------
 
 --
@@ -111,19 +88,6 @@ CREATE TABLE `tbl_proveedor` (
   `prov_id` int(11) NOT NULL,
   `prov_nombre` varchar(50) COLLATE latin1_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
-
---
--- Volcado de datos para la tabla `tbl_proveedor`
---
-
-INSERT INTO `tbl_proveedor` (`prov_id`, `prov_nombre`) VALUES
-(1, 'SJ Industrial Manufacturera'),
-(2, 'Signos Industry'),
-(3, 'Joy Staz Company'),
-(4, 'Mikaela Jeans'),
-(5, 'Lupe Jeans'),
-(6, 'Otro');
-
 -- --------------------------------------------------------
 
 --
@@ -164,17 +128,6 @@ CREATE TABLE `tbl_tipo_identificacion` (
   `TI_id` int(11) NOT NULL,
   `TI_nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_tipo_identificacion`
---
-
-INSERT INTO `tbl_tipo_identificacion` (`TI_id`, `TI_nombre`) VALUES
-(1, 'Cedula de Ciudadanìa'),
-(2, 'Cedula de Estranjeria'),
-(3, 'Nit'),
-(4, 'Targeta de Identidad');
-
 -- --------------------------------------------------------
 
 --
@@ -190,14 +143,6 @@ CREATE TABLE `tbl_usuario` (
   `USR_Portada` varchar(50) NOT NULL,
   `USR_Id_Persona` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_usuario`
---
-
-INSERT INTO `tbl_usuario` (`USR_Id`, `USR_Usuario`, `USR_Password`, `USR_Fecha_Modificacion`, `USR_Avatar`, `USR_Portada`, `USR_Id_Persona`) VALUES
-(1, 'daniel3006', '5e59753531a56a275faa9845d8383de8', 'July 21, 2016, 6:40 pm', 'daniel3006.jpg', 'daniel3006.jpg', 1);
-
 -- --------------------------------------------------------
 
 --

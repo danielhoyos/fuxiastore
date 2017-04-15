@@ -28,9 +28,10 @@ $user = AppController::$login;
                 <a href="?controller=Producto&action=productos&estado=nodisponibles">NO DISPONIBLES</a>
                 <a href="?controller=Producto&action=productos&estado=vendidos">VENDIDOS</a>
             </div>
-
-            <input class="buscarProducto" type="text" name="producto_buscar" id="producto_buscar" placeholder="Código del Producto"/>
-            <div class="icon_buscar"><span class="icon-search"></span></div>    
+            <form action="?controller=Producto&action=productoBuscar" method="POST">
+                <input class="buscarProducto" type="text" name="producto_buscar" id="producto_buscar" placeholder="Código del Producto" required/>
+                <button class="icon_buscar"><span class="icon-search"></span></button>
+            </form>
             <div id="contenedor_productos">
                 <?php
                 require_once "{$config->get("rootFolder")}{$config->get("viewsFolder")}private/PartialProductos.php";

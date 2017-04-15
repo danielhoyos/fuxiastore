@@ -202,8 +202,8 @@
 
 .icon_buscar, .icon_buscar_factura, .icon_buscar_separado{
     position: absolute;
-    width: 40px;
-    height: 19px;
+    width: 37px !important;
+    height: 39px !important;
     color: white;
     background-color: #ff0b48;
     padding: 10px 0;

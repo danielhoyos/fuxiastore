@@ -123,24 +123,22 @@ $(function () {
         });
     });
     
-    $(".icon_buscar").click(function(){
+    /*$(".icon_buscar").click(function(){
         $("#producto_buscar").removeClass("error_data");
         
         if($("#producto_buscar").val() === ""){
             $("#producto_buscar").addClass("error_data");
         }else{
-            $producto_buscar = $("#producto_buscar").val();
-            loadProductoByCode($producto_buscar);
+            loadProductoByCode($("#producto_buscar").val());
             //window.location.href = "?controller=Producto&action=productoPorCodigo&codigo="+$("#producto_buscar").val();
         }
-    });
+    });*/
 });
-
 function loadProductoByCode(producto_buscar){
     $.ajax({
         url:"?controller=Producto&action=productoBuscar",
         data:{producto_buscar:producto_buscar},
-        method:"post",
+        method:"POST",
         dataType:"html",
         success:function(data){
             $("#contenedor_productos").html(data);
