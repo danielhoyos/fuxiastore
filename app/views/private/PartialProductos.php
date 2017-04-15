@@ -64,12 +64,15 @@
                              break;
                          }
                      }
+                     $prodCompra = number_format($p->getPRO_Precio_Compra());
+                     $prodVenta = number_format($p->getPRO_Precio_Venta());
+                     
                      $datos = "<tr>
                                 <td>{$p->getPRO_Id()}</td>
                                 <td>{$p->getPRO_Nombre()}</td>
                                 <td>{$p->getPRO_Talla()}</td>
-                                <td>$ {$p->getPRO_Precio_Compra()}</td>
-                                <td>$ {$p->getPRO_Precio_Venta()}</td>
+                                <td>$ {$prodCompra}</td>
+                                <td>$ {$prodVenta}</td>
                                 <td>{$marca}</td>
                                 <td>{$categoria}</td>
                                 <td>{$sucursal}</td>";

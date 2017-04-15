@@ -7,7 +7,7 @@ $user = AppController::$login;
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>.: Contabilidad - Tienda de Ropa</title>
+        <title>.: Contabilidad - <?php echo $config->get("nameApp"); ?></title>
         <link rel="icon" type="image" href="<?php echo $config->get("rootHTTP"); ?>assets/icon.png"/>
         <link rel="stylesheet" href="<?php echo $config->get("rootHTTP"); ?>css/style.css"/>
         <link rel="stylesheet" href="<?php echo $config->get("rootHTTP"); ?>css/usuario.css"/>
@@ -30,23 +30,23 @@ $user = AppController::$login;
                     <table class="tablaContabilidad">
                         <tr>
                             <td>COMPRA DE PRODUCTOS </td>
-                            <td>$<?php echo $totalProductos; ?> </td>
+                            <td>$ <?php echo number_format($totalProductos); ?> </td>
                         </tr>
                         <tr>
                             <td>VENTAS TOTALES</td>
-                            <td>$<?php echo $totalVentas; ?></td>
+                            <td>$ <?php echo number_format($totalVentas); ?></td>
                         </tr>
                         <tr>
                             <td>VENTAS PRECIO NETO</td>
-                            <td>$<?php echo $totalVentasCompra; ?></td>
+                            <td>$ <?php echo number_format($totalVentasCompra); ?></td>
                         </tr>
                         <tr>
                             <td>VENTAS GANANCIA</td>
-                            <td>$<?php echo $totalVentasGanancia; ?></td>
+                            <td>$ <?php echo number_format($totalVentasGanancia); ?></td>
                         </tr>
                     </table>
-                </div><br><br>
-                <button><a href="?controller=Notificaciones">NOTIFICACIONES</a></button>
+                </div>
+                <center><button class="btn_notificaciones"><a href="?controller=Notificaciones">NOTIFICACIONES</a></button></center>
             </div>
             <div id="section">
                 <input class="buscarVentaIdentificacion" type="number" placeholder="Numero de Identificación" name="venta_identificacion_buscar" id="venta_identificacion_buscar"/>
@@ -60,7 +60,6 @@ $user = AppController::$login;
                     ?>
                 </div>
             </div>
-
         </div>
         <div id="div_ver_factura" class="oculto">
             <div id="factura_venta" class="ver_factura_venta">

@@ -99,6 +99,7 @@ class VentaController implements IController {
             }
             require_once "{$config->get("rootFolder")}fpdf/fpdf.php";
             $alto = 135 + (count($codigos) * 3);
+            $fecha = date("Y-m-d/H:i:s");
             $pdf = new FPDF('P', 'mm', array(80, $alto));
             $pdf->AddPage();
             $pdf->SetMargins(5, 0, 5);
@@ -167,8 +168,8 @@ class VentaController implements IController {
             $pdf->ln();
             $pdf->ln();
             $pdf->Cell(70, 3, ".", 0, 2, "C");
-            $pdf->Output("facturas/factura-no-{$r->data}.pdf", "F");
-            $abrir = "<script language='javascript'>window.open('facturas/factura-no-{$r->data}.pdf','_blank','');</script>";
+            $pdf->Output("facturas/factura-no-{$r->data}-{$_POST["PSN_Identificacion"]}-{$fecha}.pdf", "F");
+            $abrir = "<script language='javascript'>window.open('facturas/factura-no-{$r->data}-{$_POST["PSN_Identificacion"]}-{$fecha}.pdf','_blank','');</script>";
 
             $this->ventas($abrir);
         } else {

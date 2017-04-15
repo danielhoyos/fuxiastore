@@ -7,7 +7,7 @@ $user = AppController::$login;
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>.: <?php echo $user->PSN_Nombre ?> - Tienda de Ropa</title>
+        <title>.: <?php echo $user->PSN_Nombre ?> - <?php echo $config->get("nameApp"); ?></title>
         <link rel="icon" type="image" href="<?php echo $config->get("rootHTTP"); ?>assets/icon.png"/>
         <link rel="stylesheet" href="<?php echo $config->get("rootHTTP"); ?>css/style.css"/>
         <link rel="stylesheet" href="<?php echo $config->get("rootHTTP"); ?>css/usuario.css"/>

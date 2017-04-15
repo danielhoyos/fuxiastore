@@ -8,7 +8,7 @@ $user instanceof Usuario;
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>.: Venta - Tienda de Ropa</title>
+        <title>.: Venta - <?php echo $config->get("nameApp"); ?></title>
         <link rel="icon" type="image" href="<?php echo $config->get("rootHTTP"); ?>assets/icon.png"/>
         <link rel="stylesheet" href="<?php echo $config->get("rootHTTP"); ?>css/style.css"/>
         <link rel="stylesheet" href="<?php echo $config->get("rootHTTP"); ?>css/usuario.css"/>

@@ -89,6 +89,7 @@ class SeparadoController implements IController {
 
             require_once "{$config->get("rootFolder")}fpdf/fpdf.php";
 
+            $fecha = date("Y-m-d/H:i:s");
             $pdf = new FPDF('P', 'mm', array(80, 105));
             $pdf->AddPage();
             $pdf->SetMargins(5, 0, 5);
@@ -145,8 +146,7 @@ class SeparadoController implements IController {
             $pdf->ln();
             $pdf->SetFont("Courier", "B", 9);
             $pdf->Cell(70, 3, "GRACIAS POR SU COMPRA", 0, 2, "C");
-            $date = date("YmdHis");
-            $pdf->Output("separados/separado-{$date}.pdf", "F");
+            $pdf->Output("separados/separado-{$date}-{$_POST["PSN_Identificacion"]}-{$fecha}.pdf", "F");
             echo "<script language='javascript'>window.open('separados/separado-{$date}.pdf','_blank','');</script>";
 
             $separados = $separadoModel->get();

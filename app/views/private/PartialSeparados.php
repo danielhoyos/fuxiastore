@@ -2,7 +2,7 @@
 <?php
      if (count($separados) > 0) {
          ?>
-         <table class="tablasProductos">
+         <br><table class="tablasProductos">
              <thead>
                  <tr>
                      <th>IDENTIFICACIÓN</th>
@@ -82,7 +82,7 @@
          }
      } else {
          ?>
-         <center><h3>NO SE ENCONTRARON SEPARADO...</h3></center>
+         <br><br><center><h3>NO SE ENCONTRARON SEPARADOS...</h3></center>
          <?php
      }
 ?>

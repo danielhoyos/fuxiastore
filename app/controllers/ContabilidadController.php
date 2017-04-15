@@ -24,16 +24,16 @@ class ContabilidadController implements IController {
             require_once $config->get("rootFolder") . $config->get("entitiesFolder") . "Persona.php";
             require_once $config->get("rootFolder") . $config->get("modelsFolder") . "PersonaModel.php";
             
+            $pag = !isset($_REQUEST["pag"]) ? 1 : $_REQUEST["pag"];
+            
             $personaModel = new PersonaModel();
             $vendedores = $personaModel->getVendedores();
-
-            $vars["vendedores"] = $vendedores->data;
 
             $productoModel = new ProductoModel();
             $facturasModel = new VentaModel();
 
             $r = $productoModel->get();
-            $f = $facturasModel->get();
+            $f = $facturasModel->getFac($pag);
 
             $productos = $r->data;
             $totalProductos = 0;
@@ -51,12 +51,14 @@ class ContabilidadController implements IController {
             }
 
             $totalVentasGanancia = $totalVentas - $totalVentasCompra;
-
+            $cantFac = $facturasModel->getCantFac();
+            
             $vars["totalProductos"] = $totalProductos;
             $vars["totalVentas"] = $totalVentas;
             $vars["totalVentasCompra"] = $totalVentasCompra;
             $vars["totalVentasGanancia"] = $totalVentasGanancia;
             $vars["facturas"] = $f->data;
+            $vars["cantFac"] = $cantFac->data;
             $vars["vendedores"] = $vendedores->data;
             $this->view->show("private/Contabilidad.php", $vars);
         } else {

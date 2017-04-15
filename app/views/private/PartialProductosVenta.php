@@ -12,4 +12,3 @@ if (isset($productos)) {
         <?php
     }
 }
-
