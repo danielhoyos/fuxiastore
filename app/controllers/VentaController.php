@@ -99,7 +99,7 @@ class VentaController implements IController {
             }
             require_once "{$config->get("rootFolder")}fpdf/fpdf.php";
             $alto = 135 + (count($codigos) * 3);
-            $fecha = date("Y-m-d/H:i:s");
+            $fecha = date("Y-m-d-H-i-s");
             $pdf = new FPDF('P', 'mm', array(80, $alto));
             $pdf->AddPage();
             $pdf->SetMargins(5, 0, 5);
