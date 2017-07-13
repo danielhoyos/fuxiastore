@@ -90,7 +90,7 @@ class SeparadoController implements IController {
             require_once "{$config->get("rootFolder")}fpdf/fpdf.php";
 
             $fecha = date("Y-m-d-H-i-s");
-            $pdf = new FPDF('P', 'mm', array(80, 105));
+            $pdf = new FPDF('P', 'mm', array(80, 135));
             $pdf->AddPage();
             $pdf->SetMargins(5, 0, 5);
             $pdf->SetFont("Courier", "B", 16);
@@ -144,8 +144,20 @@ class SeparadoController implements IController {
             $pdf->Cell(70, 3, "Saldo: {$saldo}", 0, 0, "R");
             $pdf->ln();
             $pdf->ln();
+            $pdf->SetFont("Courier", "", 9);
+            $pdf->Cell(70, 3, "* Pasados 15 dias no se aceptan", 0, 2, "L");
+            $pdf->Cell(70, 3, "  devoluciones", 0, 2, "L");
+            $pdf->ln();
+            $pdf->Cell(70, 3, "* Los articulos separados no tienen", 0, 2, "L");
+            $pdf->Cell(70, 3, "  cambio", 0, 2, "L");
+            $pdf->ln();
             $pdf->SetFont("Courier", "B", 9);
+            $pdf->Cell(70, 3, "Cel. 315 2724717", 0, 2, "C");
+            $pdf->SetFont("Courier", "B", 11);
             $pdf->Cell(70, 3, "GRACIAS POR SU COMPRA", 0, 2, "C");
+            $pdf->ln();
+            $pdf->ln();
+            $pdf->Cell(70, 3, ".", 0, 2, "C");
             $pdf->Output("separados/separado-{$_POST["PSN_Identificacion"]}-{$fecha}.pdf", "F");
             echo "<script language='javascript'>window.open('separados/separado-{$_POST["PSN_Identificacion"]}-{$fecha}.pdf','_blank','');</script>";
 
